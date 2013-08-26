@@ -17,3 +17,11 @@ class DiscountCalculatorTests(unittest.TestCase):
     discount_calculator = DiscountCalculator()
     result = discount_calculator.calculate(250,5,'absolute')
     self.assertEqual(5, result)
+    
+  def invalid_discount_type_test(self):
+    discount_calculator = DiscountCalculator()
+    self.assertRaises(ValueError, discount_calculator.calculate, 
+    			 250, 5, 'random')
+  def excessive_absolute_discount_test(self):
+    discount_calculator = DiscountCalculator()
+    self.assertRaises(ValueError, discount_calculator.calculate, 250, 260,            'absolute')
